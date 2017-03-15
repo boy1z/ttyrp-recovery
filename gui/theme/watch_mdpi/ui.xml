@@ -3,9 +3,9 @@
 	<details>
 		<resolution width="320" height="320"/>
 		<roundscreen offset_x="40" offset_y="40"/>
-		<author>TeamWin</author>
-		<title>Backup Naowz</title>
-		<description>Default basic theme</description>
+		<author>DeadSquirrel01</author>
+		<title>TTYRP</title>
+		<description>TTYRP basic theme</description>
 		<preview>preview.png</preview>
 		<themeversion>2</themeversion>
 	</details>
@@ -184,28 +184,12 @@
 	</variables>
 
 	<templates>
-		<template name="statusbar">
-			<fill color="%accent_color%">
-				<placement x="0" y="0" w="%screen_width%" h="%header_height%"/>
-			</fill>
-
-			<fill color="%text_fail_color%">
-				<condition var1="tw_simulate_actions" var2="1"/>
-				<placement x="0" y="0" w="%screen_width%" h="%status_height%"/>
-			</fill>  
-		</template>
-
 		<template name="page">
 			<background color="%background_color%"/>
 
-			<template name="statusbar"/>
-
-			<text color="%text_color%">
-				<condition var1="tw_no_cpu_temp" var2="1"/>
-				<font resource="font_m"/>
-				<placement x="%indent%" y="%row1_header_y%"/>
-				<text>{@twrp_watch_header=TWRP %tw_version%}</text>
-			</text>
+			<fill color="%accent_color%">
+				<placement x="0" y="0" w="%screen_width%" h="%header_height%"/>
+			</fill>
 
 			<text color="%text_color%">
 				<condition var1="tw_no_cpu_temp" var2="0"/>
@@ -235,51 +219,10 @@
 				<placement x="0" y="%navbar_y%" w="%screen_width%" h="%navbar_height%"/>
 			</fill>
 
-			<button>
-				<placement x="%back_button_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="back"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<placement x="%center_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="home"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="key">home</action>
-			</button>
-
-			<button>
-				<placement x="%console_button_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="console"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="overlay">slideout</action>
-			</button>
-
-			<action>
-				<touch key="power"/>
-				<action function="togglebacklight"/>
-			</action>
-
 			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshot"/>
 			</action>
-		</template>
-
-		<template name="progress_bar">
-			<progressbar>
-				<placement x="%indent%" y="%row11_y%"/>
-				<resource empty="progress_empty" full="progress_full"/>
-				<data name="ui_progress"/>
-			</progressbar>
-
-			<animation>
-				<placement x="%indent%" y="%row11_y%"/>
-				<resource name="progress"/>
-				<speed fps="24" render="2"/>
-				<loop frame="1"/>
-			</animation>
 		</template>
 
 		<template name="console">

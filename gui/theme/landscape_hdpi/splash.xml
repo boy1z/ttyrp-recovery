@@ -2,8 +2,8 @@
 <recovery>
 	<details>
 		<resolution width="1920" height="1200"/>
-		<author>TeamWin</author>
-		<title>TWRP</title>
+		<author>DeadSquirrel01</author>
+		<title>TTYRP</title>
 		<description>splash screen</description>
 		<themeversion>2</themeversion>
 	</details>
@@ -43,7 +43,7 @@
 			<text color="%header_color%">
 				<font resource="font_l"/>
 				<placement x="960" y="970" placement="5"/>
-				<text>Recovery Project %tw_version%</text>
+				<text>TTYRP Project %tw_version%</text>
 			</text>
 		</page>
 	</pages>
