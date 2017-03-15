@@ -2,9 +2,9 @@
 <recovery>
 	<details>
 		<resolution width="480" height="800"/>
-		<author>TeamWin</author>
-		<title>Backup Naowz</title>
-		<description>Default basic theme</description>
+		<author>DeadSquirrel01</author>
+		<title>TTYRP</title>
+		<description>TTYRP basic theme</description>
 		<preview>preview.png</preview>
 		<themeversion>1</themeversion>
 	</details>
@@ -237,36 +237,6 @@
 				<placement x="0" y="0" w="%screen_width%" h="%header_height%"/>
 			</fill>
 
-			<image>
-				<condition var1="tw_busy" var2="1"/>
-				<image resource="logo"/>
-				<placement x="0" y="0"/>
-			</image>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<placement x="0" y="0"/>
-				<image resource="logo"/>
-				<action function="key">home</action>
-			</button>
-
-			<fill color="#00000030">
-				<condition var1="tw_simulate_actions" var2="0"/>
-				<placement x="0" y="0" w="%screen_width%" h="%status_height%"/>
-			</fill>
-
-			<fill color="%text_fail_color%">
-				<condition var1="tw_simulate_actions" var2="1"/>
-				<placement x="0" y="0" w="%screen_width%" h="%status_height%"/>
-			</fill>
-
-			<text color="%text_color%">
-				<condition var1="tw_no_cpu_temp" var2="1"/>
-				<font resource="font_m"/>
-				<placement x="%indent%" y="%row1_header_y%"/>
-				<text>%tw_version%</text>
-			</text>
-
 			<text color="%text_color%">
 				<condition var1="tw_no_cpu_temp" var2="0"/>
 				<font resource="font_m"/>
@@ -295,239 +265,10 @@
 				<placement x="0" y="%navbar_y%" w="%screen_width%" h="%navbar_height%"/>
 			</fill>
 
-			<button>
-				<condition var1="tw_samsung_navbar" op="!=" var2="1"/>
-				<placement x="%back_button_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="back"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_samsung_navbar" op="=" var2="1"/>
-				<placement x="%back_button_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="console"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="overlay">slideout</action>
-			</button>
-
-			<button>
-				<placement x="%center_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="home"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="key">home</action>
-			</button>
-
-			<button>
-				<condition var1="tw_samsung_navbar" op="!=" var2="1"/>
-				<placement x="%console_button_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="console"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="overlay">slideout</action>
-			</button>
-
-			<button>
-				<condition var1="tw_samsung_navbar" op="=" var2="1"/>
-				<placement x="%console_button_x%" y="%navbar_btn_y%" placement="4"/>
-				<image resource="back"/>
-				<condition var1="tw_busy" var2="0"/>
-				<action function="key">back</action>
-			</button>
-
-			<action>
-				<touch key="power"/>
-				<action function="overlay">lock</action>
-			</action>
-
 			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshot"/>
 			</action>
-		</template>
-
-		<template name="progress_bar">
-			<progressbar>
-				<placement x="%indent%" y="%row17a_y%"/>
-				<resource empty="progress_empty" full="progress_full"/>
-				<data name="ui_progress"/>
-			</progressbar>
-
-			<animation>
-				<placement x="%indent%" y="%row17a_y%"/>
-				<resource name="progress"/>
-				<speed fps="24" render="2"/>
-				<loop frame="1"/>
-			</animation>
-		</template>
-
-		<template name="sort_options">
-			<image>
-				<placement x="%indent%" y="%row1a_y%"/>
-				<image resource="tab_3"/>
-			</image>
-
-			<image>
-				<placement x="%btn3_col2_x%" y="%row1a_y%"/>
-				<image resource="tab_3"/>
-			</image>
-
-			<image>
-				<placement x="%btn3_col3_x%" y="%row1a_y%"/>
-				<image resource="tab_3"/>
-			</image>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<condition var1="tw_gui_sort_order" op="=" var2="1"/>
-				<placement x="%indent%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_name_only=Name}</text>
-				<image resource="sort_asc"/>
-				<action function="set">tw_gui_sort_order=-1</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<condition var1="tw_gui_sort_order" op="=" var2="-1"/>
-				<placement x="%indent%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_name_only=Name}</text>
-				<image resource="sort_desc"/>
-				<action function="set">tw_gui_sort_order=1</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<conditions>
-					<condition var1="tw_gui_sort_order" op="!=" var2="1"/>
-					<condition var1="tw_gui_sort_order" op="!=" var2="-1"/>
-				</conditions>
-				<placement x="%indent%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_name_only=Name}</text>
-				<image resource="sort_empty"/>
-				<action function="set">tw_gui_sort_order=1</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<condition var1="tw_gui_sort_order" op="=" var2="2"/>
-				<placement x="%btn3_col2_x%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_date_only=Date}</text>
-				<image resource="sort_asc"/>
-				<action function="set">tw_gui_sort_order=-2</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<condition var1="tw_gui_sort_order" op="=" var2="-2"/>
-				<placement x="%btn3_col2_x%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_date_only=Date}</text>
-				<image resource="sort_desc"/>
-				<action function="set">tw_gui_sort_order=2</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<conditions>
-					<condition var1="tw_gui_sort_order" op="!=" var2="2"/>
-					<condition var1="tw_gui_sort_order" op="!=" var2="-2"/>
-				</conditions>
-				<placement x="%btn3_col2_x%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_date_only=Date}</text>
-				<image resource="sort_empty"/>
-				<action function="set">tw_gui_sort_order=2</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<condition var1="tw_gui_sort_order" op="=" var2="3"/>
-				<placement x="%btn3_col3_x%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_size_only=Size}</text>
-				<image resource="sort_asc"/>
-				<action function="set">tw_gui_sort_order=-3</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<condition var1="tw_gui_sort_order" op="=" var2="-3"/>
-				<placement x="%btn3_col3_x%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_size_only=Size}</text>
-				<image resource="sort_desc"/>
-				<action function="set">tw_gui_sort_order=3</action>
-			</button>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<conditions>
-					<condition var1="tw_gui_sort_order" op="!=" var2="3"/>
-					<condition var1="tw_gui_sort_order" op="!=" var2="-3"/>
-				</conditions>
-				<placement x="%btn3_col3_x%" y="%row1a_y%"/>
-				<font resource="font_s" color="%text_button_color%"/>
-				<text>{@sort_by_size_only=Size}</text>
-				<image resource="sort_empty"/>
-				<action function="set">tw_gui_sort_order=3</action>
-			</button>
-		</template>
-
-		<template name="tabs_backup">
-			<fill color="%accent_color%">
-				<placement x="0" y="row1_y" w="%screen_width%" h="tab_height"/>
-			</fill>
-
-			<button style="tab">
-				<placement x="0" y="%row1_y%" w="%tab3_width%" h="%tab_height%"/>
-				<text>{@tab_backup=BACKUP}</text>
-				<action function="page">backup</action>
-			</button>
-
-			<button style="tab">
-				<placement x="%tab3_col2_x%" y="%row1_y%" w="%tab3_width%" h="%tab_height%"/>
-				<text>{@tab_options=OPTIONS}</text>
-				<action function="page">backup_options</action>
-			</button>
-		</template>
-
-		<template name="tabs_settings">
-			<fill color="%accent_color%">
-				<placement x="0" y="row1_y" w="%screen_width%" h="tab_height"/>
-			</fill>
-
-			<button style="tab">
-				<placement x="%tab5_centered_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_general"/>
-				<action function="page">settings</action>
-			</button>
-
-			<button style="tab">
-				<placement x="%tab5_centered_col2_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_timezone"/>
-				<action function="page">settings_timezone</action>
-			</button>
-
-			<button style="tab">
-				<placement x="%center_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_display"/>
-				<action function="page">settings_screen</action>
-			</button>
-
-			<button style="tab">
-				<placement x="%tab5_centered_col4_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_vibration"/>
-				<action function="page">settings_vibration</action>
-			</button>
-
-			<button style="tab">
-				<placement x="%tab5_centered_col5_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_language"/>
-				<action function="page">settings_language</action>
-			</button>
 		</template>
 
 		<template name="console">
@@ -561,7 +302,7 @@
 		<template name="keyboardterminaltemplate">
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
-				<placement x="0" y="%keyboard_terminal_y%" w="%screen_width%" h="42"/>
+				<placement x="0" y="%keyboard_terminal_y%" w="%screen_width%" h="96"/>
 				<keymargin x="0" y="0"/>
 				<background color="#111111"/>
 				<key-alphanumeric color="#111111" font="keylabel" textcolor="#EEEEEE"/>
@@ -577,8 +318,8 @@
 				<highlight color="%highlight_color%"/>
 				<ctrlhighlight color="#0090CA80"/>
 				<layout1>
-					<keysize height="42" width="69"/>
-					<row1 key01="68:k:29" key02="68:c:27" long02=":c:3" key03="68:c:9" key04="69:k:105" key05="69:k:108" key06="69:k:103" key07="69:k:106"/>
+					<keysize height="96" width="154"/>
+					<row1 key01="155:k:29" key02="155:c:27" long02=":c:3" key03="154:c:9" key04="154:k:105" key05="154:k:108" key06="154:k:103" key07="154:k:106"/>
 				</layout1>
 			</keyboard>
 		</template>
@@ -586,50 +327,50 @@
 		<template name="keyboardtemplate">
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
-				<placement x="0" y="%keyboard_y%" w="480" h="284"/>
-				<keymargin x="4" y="4"/>
+				<placement x="0" y="%keyboard_y%" w="1080" h="644"/>
+				<keymargin x="8" y="8"/>
 				<background color="#111111"/>
 				<key-alphanumeric color="#111111" font="keylabel" textcolor="#EEEEEE"/>
 				<key-other color="#111111" font="keylabel-small" textcolor="#5b5b5bff"/>
-				<longpress font="keylabel-longpress" textcolor="#5b5b5bff" x="6" y="0"/>
+				<longpress font="keylabel-longpress" textcolor="#5b5b5bff" x="12" y="0"/>
 				<keylabel key="0:c:8" text="Bksp" resource="backspace"/>
 				<keylabel key="0:action" text="Enter" resource="enter"/>
 				<keylabel key=" " text="Space" resource="space"/>
 				<highlight color="%highlight_color%"/>
 				<capshighlight color="%highlight_color%"/>
 				<layout1>
-					<keysize height="71" width="48"/>
+					<keysize height="161" width="108"/>
 					<row1 key01="q" long01="1" key02="w" long02="2" key03="e" long03="3" key04="r" long04="4" key05="t" long05="5" key06="y" long06="6" key07="u" long07="7" key08="i" long08="8" key09="o" long09="9" key10="p" long10="0"/>
-					<row2 key01="24:" key02="a" long02="@" key03="s" long03="#" key04="d" long04="$" key05="f" long05="%" key06="g" long06="&amp;" key07="h" long07="*" key08="j" long08="-" key09="k" long09="+" key10="l" long10="_" key11="24:"/>
-					<row3 key01="72:layout2" key02="z" long02="!" key03="x" long03="&quot;" key04="c" long04="'" key05="v" long05=":" key06="b" long06=";" key07="n" long07="/" key08="m" long08="?" key09="72:c:8"/>
-					<row4 key01="72:layout3" key02="/" key03="240: " key04="." key05="72:action"/>
+					<row2 key01="54:" key02="a" long02="@" key03="s" long03="#" key04="d" long04="$" key05="f" long05="%" key06="g" long06="&amp;" key07="h" long07="*" key08="j" long08="-" key09="k" long09="+" key10="l" long10="_" key11="54:"/>
+					<row3 key01="162:layout2" key02="z" long02="!" key03="x" long03="&quot;" key04="c" long04="'" key05="v" long05=":" key06="b" long06=";" key07="n" long07="/" key08="m" long08="?" key09="162:c:8"/>
+					<row4 key01="162:layout3" key02="/" key03="540: " key04="." key05="162:action"/>
 					<keylabel key="0:layout2" text="Shift" resource="shift"/>
 					<keylabel key="0:layout3" text="?123"/>
 				</layout1>
 				<layout2>
-					<keysize height="71" width="48" capslock="0" revert_layout="1"/>
+					<keysize height="161" width="108" capslock="0" revert_layout="1"/>
 					<row1 key01="Q" long01="1" key02="W" long02="2" key03="E" long03="3" key04="R" long04="4" key05="T" long05="5" key06="Y" long06="6" key07="U" long07="7" key08="I" long08="8" key09="O" long09="9" key10="P" long10="0"/>
-					<row2 key01="24:" key02="A" long02="@" key03="S" long03="#" key04="D" long04="$" key05="F" long05="%" key06="G" long06="&amp;" key07="H" long07="*" key08="J" long08="-" key09="K" long09="+" key10="L" long10="_" key11="24:"/>
-					<row3 key01="72:layout1" key02="Z" long02="!" key03="X" long03="&quot;" key04="C" long04="'" key05="V" long05=":" key06="B" long06=";" key07="N" long07="/" key08="M" long08="?" key09="72:c:8"/>
-					<row4 key01="72:layout3" key02="/" key03="240: " key04="." key05="72:action"/>
+					<row2 key01="54:" key02="A" long02="@" key03="S" long03="#" key04="D" long04="$" key05="F" long05="%" key06="G" long06="&amp;" key07="H" long07="*" key08="J" long08="-" key09="K" long09="+" key10="L" long10="_" key11="54:"/>
+					<row3 key01="162:layout1" key02="Z" long02="!" key03="X" long03="&quot;" key04="C" long04="'" key05="V" long05=":" key06="B" long06=";" key07="N" long07="/" key08="M" long08="?" key09="162:c:8"/>
+					<row4 key01="162:layout3" key02="/" key03="540: " key04="." key05="162:action"/>
 					<keylabel key="0:layout1" text="Shift" resource="shift_fill"/>
 					<keylabel key="0:layout3" text="?123"/>
 				</layout2>
 				<layout3>
-					<keysize height="71" width="48"/>
+					<keysize height="161" width="108"/>
 					<row1 key01="1" key02="2" key03="3" key04="4" key05="5" key06="6" key07="7" key08="8" key09="9" key10="0"/>
 					<row2 key01="@" key02="#" key03="$" key04="%" key05="&amp;" key06="*" key07="-" key08="+" key09="(" key10=")"/>
-					<row3 key01="72:layout4" key02="!" key03="48:c:34" key04="'" key05=":" key06=";" key07="/" key08="?" key09="72:c:8"/>
-					<row4 key01="72:layout1" key02="," key03="240: " key04="." key05="72:action"/>
+					<row3 key01="162:layout4" key02="!" key03="108:c:34" key04="'" key05=":" key06=";" key07="/" key08="?" key09="162:c:8"/>
+					<row4 key01="162:layout1" key02="," key03="540: " key04="." key05="162:action"/>
 					<keylabel key="0:layout1" text="ABC"/>
 					<keylabel key="0:layout4" text="~\{"/>
 				</layout3>
 				<layout4>
-					<keysize height="71" width="48"/>
-					<row1 key01="~" key02="`" key03="|" key04="48:" key05="48:" key06="48:" key07="%" key08="48:" key09="{" key10="}"/>
-					<row2 key01="48:" key02="48:" key03="48:" key04="48:" key05="48:" key06="^" key07="_" key08="=" key09="[" key10="]"/>
-					<row3 key01="72:layout3" key02="48:" key03="48:" key04="48:" key05="48:" key06="\" key07="&lt;" key08="&gt;" key09="72:c:8"/>
-					<row4 key01="72:layout1" key02="48:c:34" key03="240: " key04="." key05="72:action"/>
+					<keysize height="161" width="108"/>
+					<row1 key01="~" key02="`" key03="|" key04="108:" key05="108:" key06="108:" key07="%" key08="108:" key09="{" key10="}"/>
+					<row2 key01="108:" key02="108:" key03="108:" key04="108:" key05="108:" key06="^" key07="_" key08="=" key09="[" key10="]"/>
+					<row3 key01="162:layout3" key02="108:" key03="108:" key04="108:" key05="108:" key06="\" key07="&lt;" key08="&gt;" key09="162:c:8"/>
+					<row4 key01="162:layout1" key02="108:c:34" key03="540: " key04="." key05="162:action"/>
 					<keylabel key="0:layout1" text="ABC"/>
 					<keylabel key="0:layout3" text="?123"/>
 				</layout4>
