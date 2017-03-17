@@ -596,7 +596,8 @@ include $(commands_recovery_local_path)/injecttwrp/Android.mk \
     $(commands_recovery_local_path)/toybox/Android.mk \
     $(commands_recovery_local_path)/simg2img/Android.mk \
     $(commands_recovery_local_path)/adbbu/Android.mk \
-    $(commands_recovery_local_path)/libpixelflinger/Android.mk
+    $(commands_recovery_local_path)/libpixelflinger/Android.mk \
+    $(commands_recovery_local_path)/ttyrp_utils/Android.mk
 
 ifeq ($(TW_INCLUDE_CRYPTO), true)
     include $(commands_recovery_local_path)/crypto/lollipop/Android.mk
