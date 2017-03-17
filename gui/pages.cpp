@@ -232,15 +232,6 @@ ImageResource* LoadAttrImage(xml_node<>* element, const char* attrname)
 		return PageManager::GetResources()->FindImage(name);
 }
 
-AnimationResource* LoadAttrAnimation(xml_node<>* element, const char* attrname)
-{
-	std::string name = LoadAttrString(element, attrname, "");
-	if (name.empty())
-		return NULL;
-	else
-		return PageManager::GetResources()->FindAnimation(name);
-}
-
 bool LoadPlacement(xml_node<>* node, int* x, int* y, int* w /* = NULL */, int* h /* = NULL */, Placement* placement /* = NULL */)
 {
 	if (!node)
@@ -387,33 +378,6 @@ bool Page::ProcessNode(xml_node<>* page, std::vector<xml_node<>*> *templates, in
 			mRenders.push_back(element);
 			mActions.push_back(element);
 		}
-		else if (type == "checkbox")
-		{
-			GUICheckbox* element = new GUICheckbox(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-			mActions.push_back(element);
-		}
-		else if (type == "fileselector")
-		{
-			GUIFileSelector* element = new GUIFileSelector(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-			mActions.push_back(element);
-		}
-		else if (type == "animation")
-		{
-			GUIAnimation* element = new GUIAnimation(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-		}
-		else if (type == "progressbar")
-		{
-			GUIProgressBar* element = new GUIProgressBar(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-			mActions.push_back(element);
-		}
 		else if (type == "slider")
 		{
 			GUISlider* element = new GUISlider(child);
@@ -424,13 +388,6 @@ bool Page::ProcessNode(xml_node<>* page, std::vector<xml_node<>*> *templates, in
 		else if (type == "slidervalue")
 		{
 			GUISliderValue *element = new GUISliderValue(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-			mActions.push_back(element);
-		}
-		else if (type == "listbox")
-		{
-			GUIListBox* element = new GUIListBox(child);
 			mObjects.push_back(element);
 			mRenders.push_back(element);
 			mActions.push_back(element);
@@ -449,27 +406,6 @@ bool Page::ProcessNode(xml_node<>* page, std::vector<xml_node<>*> *templates, in
 			mRenders.push_back(element);
 			mActions.push_back(element);
 			mInputs.push_back(element);
-		}
-		else if (type == "partitionlist")
-		{
-			GUIPartitionList* element = new GUIPartitionList(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-			mActions.push_back(element);
-		}
-		else if (type == "patternpassword")
-		{
-			GUIPatternPassword* element = new GUIPatternPassword(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-			mActions.push_back(element);
-		}
-		else if (type == "textbox")
-		{
-			GUITextBox* element = new GUITextBox(child);
-			mObjects.push_back(element);
-			mRenders.push_back(element);
-			mActions.push_back(element);
 		}
 		else if (type == "template")
 		{

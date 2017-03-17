@@ -13,22 +13,14 @@ LOCAL_SRC_FILES := \
     console.cpp \
     fill.cpp \
     button.cpp \
-    checkbox.cpp \
-    fileselector.cpp \
-    progressbar.cpp \
-    animation.cpp \
     object.cpp \
     slider.cpp \
     slidervalue.cpp \
-    listbox.cpp \
     keyboard.cpp \
     input.cpp \
     blanktimer.cpp \
-    partitionlist.cpp \
     mousecursor.cpp \
     scrolllist.cpp \
-    patternpassword.cpp \
-    textbox.cpp \
     terminal.cpp \
     twmsg.cpp
 
@@ -113,13 +105,7 @@ ifeq ($(TW_CUSTOM_THEME),)
 
 ifeq ($(TWRP_NEW_THEME),true)
     TWRP_THEME_LOC := $(commands_recovery_local_path)/gui/theme/$(TW_THEME)
-    TWRP_RES := $(commands_recovery_local_path)/gui/theme/common/fonts
-    TWRP_RES += $(commands_recovery_local_path)/gui/theme/common/languages
     TWRP_RES += $(commands_recovery_local_path)/gui/theme/common/$(word 1,$(subst _, ,$(TW_THEME))).xml
-ifeq ($(TW_EXTRA_LANGUAGES),true)
-    TWRP_RES += $(commands_recovery_local_path)/gui/theme/extra-languages/fonts
-    TWRP_RES += $(commands_recovery_local_path)/gui/theme/extra-languages/languages
-endif
 # for future copying of used include xmls and fonts:
 # UI_XML := $(TWRP_THEME_LOC)/ui.xml
 # TWRP_INCLUDE_XMLS := $(shell xmllint --xpath '/recovery/include/xmlfile/@name' $(UI_XML)|sed -n 's/[^\"]*\"\([^\"]*\)\"[^\"]*/\1\n/gp'|sort|uniq)
