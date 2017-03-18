@@ -170,6 +170,7 @@ GUIAction::GUIAction(xml_node<>* node)
 		ADD_ACTION(sleep);
 		ADD_ACTION(sleepcounter);
 		ADD_ACTION(setbrightness);
+		ADD_ACTION(screenshot);
 		// remember actions that run in the caller thread
 		for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
 			setActionsRunningInCallerThread.insert(it->first);
@@ -761,17 +762,4 @@ int GUIAction::getKeyByName(std::string key)
 	}
 
 	return atol(key.c_str());
-}
-
-int GUIAction::setlanguage(std::string arg __unused)
-{
-	int op_status = 0;
-
-	operation_start("Set Language");
-	PageManager::LoadLanguage(DataManager::GetStrValue("tw_language"));
-	PageManager::RequestReload();
-	op_status = 0; // success
-
-	operation_end(op_status);
-	return 0;
 }
