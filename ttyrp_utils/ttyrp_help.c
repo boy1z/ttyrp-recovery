@@ -252,6 +252,8 @@ int main(int argc, char **argv)
 			break;
                }
         }
-  if (argc < 2)          /* If no options are used it will print the "help" message */
+
+        if (argc < 2)    /* If no options are used it will print the "help" message */
 		usage(); /* which corresponds to usage() function */
+        return 0;
 }
