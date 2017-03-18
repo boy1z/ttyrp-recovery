@@ -169,6 +169,7 @@ GUIAction::GUIAction(xml_node<>* node)
 		ADD_ACTION(sleep);
 		ADD_ACTION(sleepcounter);
 		ADD_ACTION(setbrightness);
+		ADD_ACTION(screenshot);
 		// remember actions that run in the caller thread
 		for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
 			setActionsRunningInCallerThread.insert(it->first);
@@ -176,8 +177,6 @@ GUIAction::GUIAction(xml_node<>* node)
 		// These actions will run in a separate thread
 		ADD_ACTION(terminalcommand);
 		ADD_ACTION(openrecoveryscript);
-		ADD_ACTION(setlanguage);
-		ADD_ACTION(togglebacklight);
 	}
 
 	// First, get the action
@@ -754,23 +753,4 @@ int GUIAction::getKeyByName(std::string key)
 	}
 
 	return atol(key.c_str());
-}
-
-int GUIAction::setlanguage(std::string arg __unused)
-{
-	int op_status = 0;
-
-	operation_start("Set Language");
-	PageManager::LoadLanguage(DataManager::GetStrValue("tw_language"));
-	PageManager::RequestReload();
-	op_status = 0; // success
-
-	operation_end(op_status);
-	return 0;
-}
-
-int GUIAction::togglebacklight(std::string arg __unused)
-{
-	blankTimer.toggleBlank();
-	return 0;
 }
